@@ -220,4 +220,149 @@
     		System.out.println("$"+ df.format(price2));
     		System.out.println(df.format(price3)+"원");
     ```
+    
+> 데이터 보관 > 변수와 상수
 
+**변수( variable )**
+
+- 단 하나의 값을 저장할 수 있는 메모리 공간
+- 변수의 선언 그리고 초기화
+    - 변수의 선언	: int nData;	// 메모리 공간 할당
+    - 변수의 초기화	: nData = 0;     // 값 저장
+    - 변수의 선언과 동시에 초기화 int nData = 0;
+
+**변수의 특징**
+
+- 변수는 변수 하나 당 한 개의 값만 저장할 수 있다. [ 고유성 ]
+- 새로운 값이 변수에 저장되면 이전 값은 사라진다.
+
+- **정수 : Integer(int)**
+
+```java
+int memberAge;			// 변수의 선언
+memberAge = 20;	   	// 데이터 저장
+				
+System.out.println(memberAge);
+```
+
+- **실수 : double**
+
+```java
+double memberWeight = 80.5;	 // 선언과 동시에 저장
+				
+System.out.println(memberWeight);
+```
+
+- **문자 1개 : character(char)**
+
+```java
+char memberGenderEng = 'M';
+char memberGenderKor ='남';
+System.out.println(memberGenderEng);
+System.out.println(memberGenderKor);
+```
+
+- **문자열 : String**
+
+```java
+String memberName = "KSM";
+System.out.println(memberName);
+```
+
+- **참과 거짓 : boolean**
+
+```java
+boolean isMember = true;
+System.out.println(isMember);
+```
+
+<aside>
+**변수 명명 규칙 (Naming Convention)**
+
+
+1. **절대적 규칙(문법)**
+- 변수명에 숫자는 사용 가능하나 숫자로 시작할 수 없음
+- 변수명에 특수 문자는 _ , $만 가능함
+- 변수명에 예약어(키워드)는 사용할 수 없음 ex) public , class , static
+- 변수명에 띄어쓰기를 사용 할 수 없음
+- 변수명은 대소문자가 구분됨
+
+1. **암묵적 규칙(질서,사회 문화)**
+- 변수명은 영어로 작성 ( 한글x )
+- 변수명은 소문자로 시작함 ( 클래스 이름을 대문자로 시작 )
+- 두 단어가 이어지는 경우 이어지는 단어의 첫 글자를 대문자로 작성함 (camel case) Ex) productCode , productName
+- 두 단어가 이어지는 경우 이어지는 단어를 _로 이어줌 (snake case) Ex) product_code , product_name
+- 상수명은 전부 대문자로 작성
+- 상수명에서 두 단어가 이어지는 경우 _로 이어줌
+- 불리언 변수명 앞에는 is를 붙이기 Ex) isRunning , isChecked
+- '제 3자'가 보아도 변수안에 어떤데이터가 있는지 '직관적'으로 알 수 있도록
+    
+    `변수명 작성에 마음과 정성을 들인다. ( 가장 중요 )`
+    
+    `Ex) a ( 절대 안됨 ) , v (절대 안됨) , productCode(o) , productName(o)`
+    
+</aside>
+
+- **변수의 특징(고유성 = unique )**
+
+```java
+int goodsPrice = 18000;
+// int goodsPrice = 19000;  // 똑같은 이름의 변수를 생성할 수 없음
+// 자료형 타입을 생략했으므로 기존의 데이터를 수정
+goodsPrice = 19800; 	
+goodsPrice = 22000;
+System.out.println(goodsPrice);
+```
+
+- **변수의 초깃값 : reset이 아닌 init**
+
+```java
+int deliveryPrice;				
+// 변수를 초기화(init)하지 않으면 garbage data가 변수에 저장되어 있다.
+//System.out.println(deliveryPrice);
+
+int tax = 0;	// 0 데이터로 tax변수(int형) 초깃값 지정
+```
+
+- **변수의 생명주기(life cycle), 범위(scope)**
+    - 지역변수 (local variable)
+    - 전역변수 (global variable)
+
+```java
+int x = 12;				// global variable 전역변수
+		
+if (true) {
+			int y = 7;			// local variable 지역변수
+			System.out.println(x);
+			System.out.println(y);
+			// System.out.println(z);	// error
+}
+if (true) {
+			int z = 3;
+			System.out.println(x);
+			// System.out.println(y);	// error
+			System.out.println(z);
+}
+		
+System.out.println(x);
+// System.out.println(y);	// error
+// System.out.println(z);	// error
+```
+
+**상수 (constant)**
+
+- 값이 변하지 않는 데이터
+- final 키워드를 사용하여 만든다.
+- 변경되면 안되는 데이터의 보호를 위해 사용한다.
+- 특정 데이터를 의미 있는 문자로 사용하여 인식하기 쉽게 한다.
+
+```java
+// 변수
+int orderQty = 1;
+orderQty = 3; // 수정 가능
+System.out.println(orderQty);
+
+// 상수
+final String FILE_REPOSITORY_PATH = "C:\\repo";
+// FILE_REPOSITORY_PATH = "D:\\"; // 수정 불가
+``` 
