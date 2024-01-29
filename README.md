@@ -566,3 +566,441 @@ System.out.println(!(10 != 10));
     // 코드의 맨 마지막에 한 번만 작성
     scan.close();
     ```
+
+### 데이터 제어 > 흐름, 반복
+
+**[흐름(분기)] > if, else, else if + switch case**
+
+**[반복] > for (for each), while  + do while**
+
+**[보조] > continue, break;**
+
+ > **분기문**
+ - **조건문 If 문**
+    
+    조건식이 true이면 실행되는 구문 ( false면 실행 x )
+    
+    **[ 형식 ]**
+    
+    **if (조건식) {**
+    
+    `**조건식이 true일때 실행할 명령어;**`
+    
+    **}**
+    
+    ```java
+    if (true) {
+    			// if문 안에 종속된 명령어는 tap으로 들여쓰기 한다. 
+    			System.out.println("가상의 명령어 1");
+    			System.out.println("가상의 명령어 2");
+    			System.out.println("가상의 명령어 3");
+    		}
+    if (false) {
+    			System.out.println("가상의 명령어 4");
+    			System.out.println("가상의 명령어 5");
+    			System.out.println("가상의 명령어 6");
+    		}
+    		
+    int num = 2;
+    		
+    // if문 안에 속한 명령어가 1줄이면 {}를 생략할 수 있다.
+    if (num % 2 == 0) 
+    		System.out.println("짝수");
+    		
+    if (num % 2 == 1) 
+    		System.out.println("홀수");
+    ```
+    
+- **중첩 if 문**
+    
+    if문에 종속된 명령어 안에 if문이 중첩으로 사용되는 형태
+    
+    ```java
+    int grade = 99;
+    		
+    if (grade >= 60) {
+    		 if (grade == 100) {	// 들여쓰기 중요
+    				System.out.println("만점");
+    			}
+    			System.out.println("합격");
+    		}
+    		
+    if (grade < 60) {
+    			System.out.println("불합격");
+    		}
+    ```
+    
+
+- **random library ( if와 관련 x )**
+    
+    **[ 사용법 ]**
+    
+    **Random 변수명 = new Random();**
+    
+    - Random객체를 생성한다. (import포함)
+    - ran.nextInt(범위) 메서드를 사용하여 랜덤값을 구한다.
+    
+    `> nextInt(범위) '0'부터 ~ '범위-1' 사이의 난수가 생성 된다.`
+    
+    `> 범위의 시작은 0부터이기 때문에 시작범위가 0이 아닌 경우는 추가 작업이 필요하다.`
+    
+    `예시) ran.nextInt(10) + 1; > 1 ~ 10까지 범위의 난수 생성`
+    
+    `ran.nextInt(51) + 50; > 50 ~ 100까지 범위의 난수 생성`
+    
+    `ran.nextInt(21) - 10; > -10 ~ 10까지 범위의 난수 생성`
+    
+    - random객체는 close() 메서드를 사용하지 않는다.
+    
+    ```java
+    // 0 ~ 9 사이의 랜덤값
+    int rNum1 = ran.nextInt(10);
+    System.out.println(rNum1);
+    		
+    // 100 ~ 200 사이의 랜덤값
+    int rNum2 = ran.nextInt(101)+ 100; // [0~100] + 100  
+    System.out.println(rNum2);
+    		
+    // -3 ~ 3 사이의 랜덤값
+    int rNum3 = ran.nextInt(7)- 3;	// [0~6]- 3
+    System.out.println(rNum3);
+    ```
+    
+
+- **if - else 문**
+    
+    **[ 형식 ]**
+    
+    if (조건식) {
+    
+    `명령어;`
+    
+    } else {
+    
+    `명령어;`
+    
+    }
+    
+    - if없이 else가 단독으로 올 수 없다.
+    - else를 중복해서 여러 번 사용할 수 없다.
+    - if와 같은 라인에 작성한다. (들여쓰기 라인 정렬)
+    - else 뒤에는 조건식을 쓸 수 없다.
+    - if문과 else문 사이에는 명령어가 올 수 없다.
+    
+    ```java
+    int finalScore = 61;
+    
+    if (finalScore >= 60) { // 조건식이 true일 때 실행
+    			System.out.println("합격");
+    	} 
+    else { // if 조건식이 false일 때 실행
+    			System.out.println("불합격");
+    	}
+    /*
+     * if (finalScore < 60) { // 기능적으로는 차이는 없으나 쉽게 코드 짜는게 중요
+     * System.out.println("불합격"); }
+     */
+    ```
+    
+
+- **if - else if 문**
+    
+    **[ 형식 ]**
+    
+    **if (조건식) {**
+    
+    `**명령어;**`
+    
+    **} else if (조건식) {**
+    
+    `**명령어;**`
+    
+    **} else if (조건식) {**
+    
+    `**명령어;**`
+    
+    **}**
+    
+    - else if문 조건은 '다중 택일'로 참인 조건식을 만나면
+    - 이하 조건은 실행하지 않는다.
+    - if없이 단독으로 사용할 수 없다.
+    - else문과 같이 사용할 수 있지만 else문은 맨 아래에 위치해야 한다.
+    - if문과 else if문 사이에는 명령어가 올 수 없다.
+    
+    ```java
+    finalScore = 65;
+    if (finalScore >= 90) {	// 조건식이 true일 때 실행
+    			System.out.println("A");
+    		}
+    else if (finalScore >= 80) {	// 위 조건식이 false이며 조건식이 true일 때
+    			System.out.println("B");
+    		}
+    else if (finalScore >= 70) {	// 위 조건식이 false이며 조건식이 true일 때
+    			System.out.println("C");
+    		}
+    else if (finalScore >= 60) {	// 위 조건식이 false이며 조건식이 true일 때
+    			System.out.println("D");
+    		}
+    else {		// 위의 모든 조건식이 false일 때 실행
+    			System.out.println("F");
+    		}
+    ```
+    
+- **switch case**
+    - if문과 다르게 범위 형태로 직접적으로 분기하지 않고 데이터를 기준으로 직접 분기한다.
+    - switch 기준변수에는 정수, 문자, 문자열 자료형을 사용할 수 있다.
+    - 케이스들 중 해당되는 곳이 없을때 default로 분기된다.
+    
+    **[ before 형식 ]**
+    
+    **switch (변수) {**
+    
+    **case 데이터:
+    명령어
+    break;
+    case 데이터:
+    명령어
+    break;   		
+    case 데이터:
+    명령어
+    break;
+    default:
+    명령어;
+    }**
+    
+    - 분기 case뿐만 아니라 아래 case까지 모두 수행하여
+    이러한 분기를 원치않을 경우 의도적으로 break 명령어를 작성한다.
+    
+    ```java
+    // switch case old - version 
+    		int selectMenu = 1; 	// 1, 2, 3, 4, 5
+    		
+    		switch (selectMenu) {	// 범위 분기 안됨
+    			case 1:
+    				System.out.println("1번 메뉴로 분기");
+    				break;
+    			case 2:
+    				System.out.println("2번 메뉴로 분기");
+    				break;
+    			case 3:
+    				System.out.println("3번 메뉴로 분기");
+    				break;
+    			default : 
+    				System.out.println("default 메뉴로 분기");
+    		}
+    ```
+    
+    **[ after 형식 ]**
+    
+    **switch (변수) {**
+    
+    **case 데이터 -> {
+    명령어
+    }
+    case 데이터 -> {
+    명령어
+    }  		
+    case 데이터 -> {
+    명령어
+    }
+    default -> {
+    명령어;
+    }**
+    
+    - 새로운 case구문에서는 :(콜론) 대신 ->(애로우 구문)을 사용하여 문법을 작성한다.
+    - { }로 몸체를 만들어서 명령어를 실행하며 명령어가 1줄일 경우에는 {}를 생략할 수 있다.
+    - 자동으로 break가 적용되어 각 case가 분리된다.
+    
+    ```java
+    // switch case new - version
+    		switch (selectMenu) {
+    			case 1 -> {
+    				System.out.println("1번 메뉴로 분기");
+    			}
+    			case 2 -> {
+    				System.out.println("2번 메뉴로 분기");
+    			}
+    			case 3 -> {
+    				System.out.println("3번 메뉴로 분기");
+    			}
+    			default -> {
+    				System.out.println("default로 분기");
+    			}
+    ```
+ > **반복문**
+ - **while**
+    
+    **[ 형식 ]**
+    
+    **초기식;**
+    
+    **while ( 조건식 ) {**
+    
+    `**조건식이 참일동안 실행할 명령어;**`
+    
+    `**증감식;**`
+    
+    **}**
+    
+    - 반복문의 조건 3가지
+    
+    `1) 초기식 : 조건식을 false로 바꾸기 위한 초깃값 셋업`
+    
+    `2) 조건식 : 조건판별`
+    
+    `3) 증감식 : 조건식을 false로 바꾸기 위한 증가,감소`
+    
+    ```java
+      	int i = 0;	// 초기식
+    		
+    		System.out.println("반복문 시작");
+    		
+    		while(i < 10) {	// 조건식이 true이면 실행 false면 반복문 밖 나감
+    
+    			System.out.println("명령어");
+    			i++;	// 증(가)감(소)식
+    			
+    			}
+    		System.out.println("반복문 종료");
+    ```
+    
+- **do while**
+    
+    **[ 형식 ]**
+    
+    **do {**
+    
+    `**반복할 명령어;**`
+    
+    **} while ( 조건식 );**
+    
+    - while문과 do~while문의 차이점은 반복 조건의 '검사시점'이다.
+        
+        `( while : 반복 조건식을 먼저 검사 )`
+        
+        `( do~while : 일단 한번 실행한 후 반복조건을 검사 )`
+        
+    - while문 조건식 뒤에 ;을 잊지 않고 반드시 써주어야 한다.
+    
+    ```java
+    	 int num = 0;
+    		
+    		do {	// 일단 한 번 실행하고 조건을 봄
+    			System.out.println("do while 명령어");
+    			num++;
+    		} while (num > 0 && num < 4);
+    ```
+    
+
+- **for**
+    - 반복문의 조건 3가지
+    
+    `1) 초기식 2) 조건식 3) 증감식`
+    
+    **[ 형식 ]**
+    
+    **for (초기식; 조건식; 증감식) {**
+    
+    `**조건식이 참일때 반복할 명령어;**`
+    
+    **}**
+    
+    - for문의 실행 순서
+        
+        1)초기식
+        
+        2)조건식 3) 명령어 4) 증감식
+        
+        조건이 false가 될 때까지 2)3)4) 반복
+        
+    - for문 안의 생성 변수는 for문 안에서만 접근 가능하다.
+    - for문도 break와 continue를 같이 사용할 수 있다.
+    
+    ```java
+        int x = 1;					// 초기식
+    		while (x <= 5) {			// 조건식
+    			System.out.println(x);	// 명령어
+    			x++;					// 증감식
+    		}
+    		
+    		for (int i = 1; i <= 5; i++) { // (초기식 ; 조건식 ; 증감식)
+    			System.out.println(i);	// 명령어
+    	}
+    		
+    		// i는 for문의 지역변수
+    		for (int i = 0; i < 10; i++) { // 초기식 -> 조건식 -> 명령문 -> 증감식 -> 명령문 .. 반복
+    			System.out.println(i);
+    			if (i == 5) {
+    				break;	// for문도 보조 제어문과 함께 사용 가능
+    			}
+    		}
+    		
+    		// for + [crtl + sapcebar] > for문 생성 단축키
+    ```
+    
+- **이중 for문** (별찍기 문제로 점검)
+  
+ > **보조제어문**
+ - **break, continue**
+    - 반복문 안에서 동작한다.
+    - 반복문 안에서 반복문의 역할을 보조한다.
+        
+        `break : 반복문을 종료한다.`
+        
+        `continue : 반복문의 조건시점으로 점프한다.`
+        
+    
+    ```java
+      	int i = 0;
+    		while (true) {	// while은 조건식에 true, false가 더 잘 어울림
+    			if (i == 3) {	// 특정 이벤트 발생
+    				break;	// 반복문 종료
+    			}
+    			System.out.println(i);
+    			i++;
+    		} // break 하면 이 밑으로 빠져나감
+    		
+    		System.out.println();
+    		
+    		i = 0;
+    		while(i < 8) {	// continue 하면 다시 while 조건식으로 감
+    			i++;	// if continue 앞에 있어야 계속 값이 올라감
+    			if( i % 2 == 1 ) {
+    				continue;	// continue가 들어간 if문은 가운데 위치하기
+    			}
+    			System.out.println(i);
+    	}
+    		
+    		System.out.println();
+    		
+    		// continue 사용예제
+    				Scanner scan = new Scanner(System.in);
+    				
+    				while (true) {
+    					
+    					System.out.println("1. 햄버거");
+    					System.out.println("2. 콜라");
+    					System.out.println("3. 감자");
+    					
+    					System.out.print("#메뉴입력 : ");
+    					int getMenu = scan.nextInt();
+    					
+    					if (getMenu < 1 || getMenu > 3) {	// 결계 
+    						System.out.println("1~3번 중에 선택하세요.\n");
+    						continue;
+    					}
+    					
+    					if      (getMenu == 1) System.out.println("입력하신 메뉴는 '햄버거' 입니다.");
+    					else if (getMenu == 2) System.out.println("입력하신 메뉴는 '콜라' 입니다.");
+    					else if (getMenu == 3) System.out.println("입력하신 메뉴는 '감자' 입니다.");
+    					
+    					System.out.print("#현금 투입 :");
+    					int getMoney = scan.nextInt();
+    					
+    					System.out.println(getMoney + " 원이 투입 되었습니다.");
+    					System.out.println(" - 구매 작업 - \n\n"); // \n : new line
+    					break;
+    					
+    				}
+    ```
+    
