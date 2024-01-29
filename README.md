@@ -827,6 +827,7 @@ System.out.println(!(10 != 10));
     				System.out.println("default로 분기");
     			}
     ```
+
  > **반복문**
  - **while**
     
