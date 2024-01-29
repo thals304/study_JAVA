@@ -144,22 +144,28 @@
     <aside></aside>
     
     1. **new Date()**
+       
     - 현재 시간 정보를 생성한다.
       java.util.Date > 날짜 + 시간
       java.sql.Date > 날짜
     
     2.  **System.currentTimeMillis()**
+       
     - 1970년 1월 1일 자정부터 이 메소드가 실행되는 순간까지 지나온 시간을 밀리초(1/1000초) 단위로 얻어온다.
     - 13자리의 숫자를 얻어오기 때문에 int로 처리하면 에러가 발생되므로 **long**으로 저장한다.
+      
     3.  **시간 출력 형식 SimpleDateFormat**
+       
     - **new Date(), System.currentTimeMillis()라는 날 것을 보관**
     - 날짜 및 시간 출력 서식 지정 방법은 SimpleDateFormat 객체를 사용하여 구현한다.
     - SimpleDateFormat 변수명 = new SimpleDateFormat("날짜 및 시간 서식"); 형태로 객체를 생성한다.
+      
      **[ 대표서식 ]**
     yyyy(년도) MM(월) dd(일) hh(시) mm(분) ss(초)
     - 상세 서식은 구글에서 "simpledateformat 형식"을 검색하여 사용한다.
     - **sdf.format(date);** 메서드를 사용하여 날짜 표현식을 지정한다.
     중요) 날짜타입 데이터에서 글자타입으로 데이터의 형이 변환된다.
+
     
     </aside>
     
@@ -283,6 +289,7 @@ System.out.println(isMember);
 
 
 1. **절대적 규칙(문법)**
+   
 - 변수명에 숫자는 사용 가능하나 숫자로 시작할 수 없음
 - 변수명에 특수 문자는 _ , $만 가능함
 - 변수명에 예약어(키워드)는 사용할 수 없음 ex) public , class , static
@@ -290,6 +297,7 @@ System.out.println(isMember);
 - 변수명은 대소문자가 구분됨
 
 1. **암묵적 규칙(질서,사회 문화)**
+   
 - 변수명은 영어로 작성 ( 한글x )
 - 변수명은 소문자로 시작함 ( 클래스 이름을 대문자로 시작 )
 - 두 단어가 이어지는 경우 이어지는 단어의 첫 글자를 대문자로 작성함 (camel case) Ex) productCode , productName
@@ -327,6 +335,7 @@ int tax = 0;	// 0 데이터로 tax변수(int형) 초깃값 지정
 ```
 
 - **변수의 생명주기(life cycle), 범위(scope)**
+  
     - 지역변수 (local variable)
     - 전역변수 (global variable)
 
@@ -519,4 +528,41 @@ System.out.println(!(10 != 10));
     
     char result = totalGrade >= 60 ? 'P' : 'F';
     System.out.println(result);
+    ```
+
+### 데이터 입력
+
+- **Scanner**
+    
+    콘솔에 키보드로 데이터 입력받기
+    
+    **[ 순서 중요 ]**
+    
+    1. import java.util.Scanner;	// Scanner클래스를 불러온다.
+    2. Scanner scan = new Scanner([System.in](http://system.in/)); // scan 객체를 생성한다.
+    3. System.out.println("#나이 입력: "); // 안내문을 작성한다.
+    4. scan.nextInt(); // 키보드로 입력받는다.
+    5. scan.close();
+    
+    ```java
+    // 코드의 시작부분에서 1번만 작성
+    Scanner scan = new Scanner(System.in);
+    		
+    System.out.print("상품 가격을 입력하세요 : ");
+    int productPrice = scan.nextInt();	// 메서드를 사용해 int 타입 데이터 입력 받음
+    		
+    System.out.println("입력하신 상품 가격은 " + productPrice + "원 입니다.");
+    System.out.println("부가세는 " + (productPrice * 0.1) + "원 입니다.");
+    System.out.println("총 결제 금액은 " + (productPrice + (productPrice * 0.1))+ "입니다");
+    		
+    System.out.print("월급을 입력하세요: ");
+    int salary = scan.nextInt();
+    		
+    System.out.println("입력하신 월급은 "+ salary + "원 입니다.");
+    double tax = salary * 0.033;
+    System.out.println("원천징수 금액은 "+ salary + "원 입니다." );
+    System.out.println("실 수령액은 " + (salary - tax) + "원 입니다.");
+    		
+    // 코드의 맨 마지막에 한 번만 작성
+    scan.close();
     ```
