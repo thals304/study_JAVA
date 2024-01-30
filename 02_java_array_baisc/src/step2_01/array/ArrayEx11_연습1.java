@@ -48,7 +48,7 @@ public class ArrayEx11_연습1 {
 		int[] arr   = new int[5];
 		int idx = 0;
 		
-		while(idx < 5) {	// for문으로도 충분리 바꿀 수 있음
+		while(idx < 5) {	// for문으로도 충분히 바꿀 수 있음
 			int rNum = ran.nextInt(5);	// [0-4]
 			if(isFirst[rNum] == false) {	
 				/*

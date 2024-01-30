@@ -2,7 +2,7 @@ package step2_01.array;
 
 import java.util.Scanner;
 
-// 24/01.25 time
+// 
 /*
  * today 소감문
  * 
