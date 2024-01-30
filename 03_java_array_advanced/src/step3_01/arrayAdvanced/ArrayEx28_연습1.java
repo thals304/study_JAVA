@@ -26,11 +26,11 @@ public class ArrayEx28_연습1 {
 		
 		int[] arr = new int[5];
 		
-		int i = 0;				// 왜 이런 변수들을 쓴건지 잘 이해가 안됨
+		int i = 0;		// 반복문 횟수 카운드 변수		
 		while (i < arr.length) {
 			int rNum = ran.nextInt(10) + 1;
-			int dupleCheck = 1;	// 중복 확인 위한 변수
-			int j = 0;
+			int dupleCheck = 1;	// 중복 확인 위한 변수  1: 중복 X
+			int j = 0;			// 이 변수를 쓴 이유가 뭐지?
 			
 			while (j < i) {	
 				if (rNum == arr[j]) {	// rNum이 배열에 있는지 확인

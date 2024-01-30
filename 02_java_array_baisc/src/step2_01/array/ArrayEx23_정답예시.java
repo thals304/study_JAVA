@@ -59,7 +59,7 @@ public class ArrayEx23_정답예시 {
 				
 				if (check == -1) {
 					System.out.println("계좌번호가 중복됩니다.");
-					//continue 안써주나?
+					//continue 안써주나? 여기서는 쓰거나 안쓰거나 상관 없음
 				}
 				else {
 					System.out.print("[가입]비밀번호 입력 : ");

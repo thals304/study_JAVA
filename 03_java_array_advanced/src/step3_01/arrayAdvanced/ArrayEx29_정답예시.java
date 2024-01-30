@@ -2,6 +2,7 @@ package step3_01.arrayAdvanced;
 
 import java.util.Arrays;
 import java.util.Scanner;
+
 /*
  * # 숫자 야구 게임
  * 
