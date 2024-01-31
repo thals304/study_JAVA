@@ -40,12 +40,17 @@ public class ArrayEx29_정답예시 {
 				System.out.print("[" + (i+1)+"] 1~9 입력 : ");
 				int getNum = scan.nextInt();
 				
-				int check = 1;
-				for (int j = 0; j < i; j++) {
+				int check = 1;	// 중복체크 변수
+				for (int j = 0; j < i; j++) {	// 입력한 값이 앞에 인덱스 요소들과 중복인지 비교
 					if (getNum == me[j]) 
 						check = -1;
 				}
-				
+				/* i-- 한 이유는? 
+				 * 내 생각: me[0]은 첫 번째 입력 숫자라 중복 x -> else
+				 * me[1]이 me[0]과 중복일 때 i는 1 -> 0 으로 바뀌고 
+				 * for문이 증감식으로 간다는 점. 즉 for문 i는 무조건 하나씩 증가하니
+				 * 중복일 때 다시 입력을 하도록 해야하니 밑에서 줄여줘야함  
+				 * */	
 				if (check == -1) 	i--;
 				else 				me[i] = getNum;
 			

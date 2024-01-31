@@ -41,46 +41,39 @@ public class ArrayEx29_연습1 {
 		int[] me = new int[3];
 
 		while (true) {
-			int strike = 0;
+			int strike = 0;	// 누적되지 않게 맨 위에 써서 3s 될 때까지 쓸 수 있도록 초기화 해줘야함 
 			int ball = 0;
-			for (int i = 0; i < me.length; i++) {	// 배열에 값 입력과 중복 확인 
-				System.out.print("[" + (i+1) +"] 1~9 입력 :" );	// 여긴 왜 i+1이지? 배열은 0부터 시작인데
+			
+			for (int i = 0; i < me.length; i++) {
+				System.out.print("[" + (i+1) + "] 1~9 입력 : ");
 				int getNum = scan.nextInt();
 				
-				int check = 1; 	// 중복체크 변수
-				for (int j = 0; j < i; j++) {	// 입력한 값이 앞에 인덱스 요소들과 중복인지 비교
-					if (getNum == me[j]) {	
+				int check = 1;
+				for (int j = 0; j < i; j++) {
+					if (getNum == me[j])
 						check = -1;
-					}
-				/* i-- 한 이유는? 
-				 * 내 생각: me[0]은 첫 번째 입력 숫자라 중복 x -> else
-				 * me[1]이 me[0]과 중복일 때 i는 1 -> 0 으로 바뀌고 
-				 * for문이 0부터 다시 시작이면 me[0]부터 다시 입력하면 안되는데
-				 * 디버그 :me[1]이 me[0]과 중복일 때 i는 1 -> 0 으로 바뀌고 
-				 * else로 가는 이유가 뭐지?
-				 * */	
-				if (check == -1) i--;	
-				else me[i] = getNum;
 				}
 				
+				if (check == -1) i--;
+				else me[i] = getNum;
 			}
 			
 			for (int i = 0; i < com.length; i++) {
-				for (int j = 0; i < me.length; j++) {
-					if (com[i] == me[j]) {
-					    if (i == j) strike++;
-					    else if (i != j) ball++;
-					}
+				for (int j = 0 ; j < me.length; j++ ) {
+					if (com[i] == me[j]) strike++;
+					else if (com[i] != me[j]) ball++;
 				}
 			}
 			
-			System.out.println(strike + "s");
-			System.out.println(ball + "b");
+			System.out.print(strike + "s  ");
+			System.out.print(ball + "s");
 			System.out.println();
+			
 			if (strike == 3) {
-				System.out.println("정답. 프로그램 종료");
+				System.out.println("정답! 게임 종료");
 				break;
 			}
 		}
+		scan.close();
 	}
 }
