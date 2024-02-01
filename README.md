@@ -284,9 +284,7 @@ boolean isMember = true;
 System.out.println(isMember);
 ```
 
-<aside>
 **변수 명명 규칙 (Naming Convention)**
-
 
 1. **절대적 규칙(문법)**
    
