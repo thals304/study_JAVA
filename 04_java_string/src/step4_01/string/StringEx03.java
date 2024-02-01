@@ -33,8 +33,8 @@ public class StringEx03 {
 		System.out.println(str.indexOf("s"));
 		System.out.println(str.indexOf("m"));
 		System.out.println(str.indexOf("ks"));	// 글자가 몇 번째부터 시작하는지
-		
 		System.out.println("\n=============\n");
+		
 		// [3] charAt(index) : 문자 한개 추출 (인덱싱)
 		System.out.println(str.charAt(2));	// 몇 번째에 어떤 글자가 있는지
 		
