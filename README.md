@@ -1,4 +1,4 @@
-# web_bakend
+# web_backend
 ## **🔥 목표**
 
 - 독립 (생각하는 것을 코드로 )
@@ -1004,3 +1004,268 @@ System.out.println(!(10 != 10));
     ```
 
     ### 배열 (array)
+
+   - **1차원 배열**
+    
+    **[ 형식 ]**
+    
+    **자료형[] 배열명 = new 자료형[방의개수];**
+    
+    **자료형 배열명[] = new 자료형[방의개수];**
+    
+    - '같은 자료형'의 데이터를 '여러 개' 저장하기 위한 자료구조
+    - **인덱스(index)** : 0부터 시작하는 방 번호가 부여된다.
+    - **엘리먼트(element)** : 배열의 요소를 지칭한다. (배열 값)
+    - 배열은 생성시에 초깃값이 부여되어 있다.
+    - String 배열의 초기값 : null
+    - int 배열의 초기값 : 0
+    - double 배열의 초기값 : 0.0
+    - char 배열의 초기값 : '0'
+    - boolean 배열의 초기값 : false
+    - 배열은 주소변수이다.
+    - 배열을 크기가 변하지 않는다.(영구적) 배열의 요소를 삭제하여도 배열의 크기는 고정되어있다.
+    - 배열의 요소를 지우는 것은 배열의 초깃값으로 다시 저장하는 것을 의미한다.
+    - null을 대입함으로써 배열의 전체를 삭제할 수 있다.
+    
+    ```java
+       // 1. 일반 변수 ( 데이터 저장 )
+    		int testVar = 0;
+    		testVar = 3;
+    		System.out.println(testVar);
+    		
+    		// 2. 주소 변수 ( 주소 저장 )	
+    		int[] arr = null;	// 주소 변수의 초깃값은  null로 지정
+    		arr = new int[5];	// fix 됨 
+    		
+    		System.out.println(arr);	// 배열의 이름은 주소 [I@515f550a : link
+    		
+    		System.out.println(arr[0]);
+    		System.out.println(arr[1]);
+    		System.out.println(arr[2]);
+    		System.out.println(arr[3]);
+    		System.out.println(arr[4]);
+    		
+    		// java.lang.ArrayIndexOutOfBoundsException:
+    		// 배열의 최대 범위를 넘어설때 발생하는 에러
+    		// System.out.println(arr[5]);
+    		
+    		arr[0] = 10;	// 배열의 요소(elements)에는 초깃값이 지정되어 있다.
+    		arr[1] = 20;	// vs 변수는 가비지 값이 저장되어 있어 init 초깃값 넣어줘야 함
+    		arr[2] = 30;
+    		arr[3] = 40;
+    		arr[4] = 50;
+    		
+    		// 배열명.length > 배열의 크기 반환
+    		for(int i = 0; i < arr.length; i++) {
+    			System.out.println(arr[i]);
+    		}
+    		
+    		// 배열의 '요소'(element)를 삭제할 수 없고
+    		// 초깃값으로 다시 지정하여 데이터를 삭제한다.
+    		arr[3] = 0; // 처음 상태
+    		arr[4] = 0;
+    		for (int i = 0; i < arr.length; i++) {
+    			System.out.println(arr[i]);
+    		}
+    		
+    		// null 대입하여 '배열 자체'를 삭제 할 수 있다.
+    		arr = null;
+    		// System.out.println(arr[0]);	// java.lang.NullPointerException
+    ```
+    
+    ```java
+        // 배열 사용 예시 1
+    		String[] test1 = new String[3];
+    		double[] test2 = new double[5];
+    		char[] test3 = new char[1];
+    		boolean[] test4 = new boolean[10];
+    		
+    		int[] arr1 = new int[3];
+    		arr1[0] = 10;
+    		arr1[1] = 20;
+    		arr1[2] = 30;
+    		
+    		// 배열 사용 예시 2 : 축약형 (배열을 처음 생성할 때 한 번만 가능)
+    		int[] arr2 = {10,20,30,40,50,60,70,80,90,100};
+    		// arr2 = {100,200,300};	// 두번 이상은 안됨
+    		String[] arr3 = {"하나","둘","셋","넷","다섯"};
+    		// arr3 = {"일","이","삼"};
+    		char[] arr4 = {'O','X'};
+    		
+    		// 배열 사용 예시 3 : 다른 문법과의 조합
+    		int[] arr5 = new int[100];
+     		for(int i = 0; i < arr5.length ; i++) {
+     			arr5[i]= i + 1;
+     		}
+     		// 배열 전체 요소 출력 : 순회
+     		for(int i = 0; i < arr5.length; i++) {
+     			System.out.print(arr5[i] + " ");
+     		}
+     		
+     		for(int i = 0; i < arr2.length; i++) {
+     			System.out.print(arr2[i] + " ");
+     		}
+     		
+     		// (참고) 배열이 익숙해진 후에 사용
+     		// Arrays + ctrl + spacebar -> import java.util.Arrays; 뜸
+     		// Arrays.toString(배열명) > 배열의 전체요소 출력
+     		
+     		System.out.println(Arrays.toString(arr3));
+     		System.out.println(Arrays.toString(arr4));
+     		System.out.println(Arrays.toString(arr5));
+    ```
+
+    - **배열의 주소**
+    - 배열의 이름 = 주소
+    temp 배열에 arr 배열을 저장하는 것 = **권리를 부여하는 것**
+
+```java
+// 일반 변수
+		int nVar1 = 10;
+		int nVar2 = nVar1;	// 데이터를 (복사하여) 대입
+		
+		nVar1 = 20;
+		System.out.println(nVar1);	// 20
+		System.out.println(nVar2);	// 10
+		
+		System.out.println();
+		
+		// 배열
+		int[] arr = {87, 100, 24, 11, 79};
+		int[] temp = arr; // 주소(레퍼런스, 참조)를 대입  //temp는 임시라는 의미를 가진 변수
+		
+		System.out.println("arr" + arr);	// 링크(주소)가 나옴
+		System.out.println("temp" + temp);
+		System.out.println();
+		
+		System.out.println("arr : " + Arrays.toString(arr));	
+		System.out.println("temp : " + Arrays.toString(temp));
+		System.out.println();
+		
+		arr[0] = 0;
+		temp[1] = 0;
+		arr[2] = 0;
+		temp[3] = 0;
+		arr[4] = 0;
+		// 배열은 한쪽에서 바뀌어도 양쪽에서 바뀜
+		System.out.println("arr : " + Arrays.toString(arr));	
+		System.out.println("temp : " + Arrays.toString(temp));
+```
+
+
+- **이차원 배열**
+    
+    **[형식]**
+    
+    **자료형 [ ][ ]     변수명   =   new   자료형 [ 행 ] [ 열 ]** 
+    
+    ```java
+        int[][] arr = new int[2][4];	// [2] : 행 [4] : 열
+    		
+    		arr[0][0] = 10;
+    		arr[0][1] = 20;
+    		arr[0][2] = 30;
+    		arr[0][3] = 40;
+    		
+    		arr[1][0] = 50;
+    		arr[1][1] = 60;
+    		arr[1][2] = 70;
+    		arr[1][3] = 80;
+    		
+    		System.out.println("arr : " + arr);		// 링크(주소)
+    		System.out.println("arr[0] : " + arr[0]); 	// 링크(주소)
+    		System.out.println("arr[1] : " + arr[1]);	// 링크(주소)
+    		
+    		System.out.println("arr[0][0] : " + arr[0][0]);	// 값
+    		System.out.println("arr[0][1] : " + arr[0][1]);	
+    		System.out.println("arr[0][2] : " + arr[0][2]);
+    		System.out.println("arr[0][3] : " + arr[0][3]);
+    		
+    		System.out.println("arr[1][0] : " + arr[1][0]);
+    		System.out.println("arr[1][1] : " + arr[1][1]);
+    		System.out.println("arr[1][2] : " + arr[1][2]);
+    		System.out.println("arr[1][3] : " + arr[1][3]);
+    		
+    		System.out.println();
+    		
+    		for (int i = 0; i < 2; i++) {
+    			for (int j = 0; j < 4; j++) {
+    				System.out.print(arr[i][j]+ " ");
+    				}
+    			System.out.println();
+    			}
+    		System.out.println();
+    		
+    		System.out.println("arr.length : " + arr.length); // arr.length: 행 개수 
+    		
+    		System.out.println("arr[0].length : " + arr[0].length);	
+    		System.out.println("arr[1].length : " + arr[1].length);
+    		
+    		for (int i = 0; i < arr.length; i++) {
+    			for (int j = 0; j < arr[i].length; j++) {
+    				System.out.print(arr[i][j] + " ");
+    			}
+    			System.out.println();
+    		}
+    		System.out.println();
+    		
+    		// 생각해보기 (주소 or 데이터)
+    		int[][] temp1 = arr;		// 주소(링크)
+    		int[] temp2   = arr[0]; 	// 주소
+    		int[] temp3   = arr[1];		// 주소
+    		int temp4     = arr[0][0];	// 데이터
+    		int temp5     = arr[1][1];	// 데이터
+    		
+    		// 축약형 2차원 배열
+    		int[][] testArr = {
+    				{10,20,30,40,50},
+    				{60,70,80,90,100}	// {60,70,80,90}만 쓰면 testArr[1][4] 은 null
+    		};
+    		
+    		for (int i = 0; i < testArr.length; i++) {
+    			for (int j = 0; j < testArr[i].length; j++) {
+    				System.out.print(testArr[i][j] + " ");
+    			}
+    			System.out.println();
+    		}
+    ```
+
+    - **배열 컨트롤러 (자료구조)**
+
+    	- **추가 (append)**
+    
+    	프로그래밍에서 데이터의 추가는 가장 끝 (마지막)에 하는 것이 일반적인 정책
+
+	```java
+    int[] arr = {10 , 20 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0};
+		int elementCnt = 2;
+		int selectMenu = 0;
+		
+		while (true) {
+			
+			System.out.println(Arrays.toString(arr));
+			System.out.println();
+			
+			System.out.println("[1]추가");
+			System.out.println("[0]종료");
+			System.out.print("메뉴 선택 : ");
+			selectMenu = scan.nextInt();
+			
+			if (selectMenu == 1) {
+				
+				System.out.print("추가할 값 입력 : ");
+				int data = scan.nextInt();
+				
+				if(elementCnt == arr.length) {	
+					System.out.println("더이상 추가할 수 없습니다.");
+					continue;
+				}
+				arr[elementCnt] = data;
+				elementCnt ++;
+			}
+			else if (selectMenu == 0) {
+				scan.close();	
+				break; 	
+			}
+}
+```
