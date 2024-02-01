@@ -1004,5 +1004,3 @@ System.out.println(!(10 != 10));
     ```
 
     ### 배열 (array)
-
-   
