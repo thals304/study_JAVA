@@ -1115,42 +1115,42 @@ System.out.println(!(10 != 10));
      		System.out.println(Arrays.toString(arr5));
     ```
 
-    - **배열의 주소**
+ - **배열의 주소**
     - 배열의 이름 = 주소
     temp 배열에 arr 배열을 저장하는 것 = **권리를 부여하는 것**
 
-```java
-// 일반 변수
-		int nVar1 = 10;
-		int nVar2 = nVar1;	// 데이터를 (복사하여) 대입
-		
-		nVar1 = 20;
-		System.out.println(nVar1);	// 20
-		System.out.println(nVar2);	// 10
-		
-		System.out.println();
-		
-		// 배열
-		int[] arr = {87, 100, 24, 11, 79};
-		int[] temp = arr; // 주소(레퍼런스, 참조)를 대입  //temp는 임시라는 의미를 가진 변수
-		
-		System.out.println("arr" + arr);	// 링크(주소)가 나옴
-		System.out.println("temp" + temp);
-		System.out.println();
-		
-		System.out.println("arr : " + Arrays.toString(arr));	
-		System.out.println("temp : " + Arrays.toString(temp));
-		System.out.println();
-		
-		arr[0] = 0;
-		temp[1] = 0;
-		arr[2] = 0;
-		temp[3] = 0;
-		arr[4] = 0;
-		// 배열은 한쪽에서 바뀌어도 양쪽에서 바뀜
-		System.out.println("arr : " + Arrays.toString(arr));	
-		System.out.println("temp : " + Arrays.toString(temp));
-```
+	```java
+	// 일반 변수
+			int nVar1 = 10;
+			int nVar2 = nVar1;	// 데이터를 (복사하여) 대입
+			
+			nVar1 = 20;
+			System.out.println(nVar1);	// 20
+			System.out.println(nVar2);	// 10
+			
+			System.out.println();
+			
+			// 배열
+			int[] arr = {87, 100, 24, 11, 79};
+			int[] temp = arr; // 주소(레퍼런스, 참조)를 대입  //temp는 임시라는 의미를 가진 변수
+			
+			System.out.println("arr" + arr);	// 링크(주소)가 나옴
+			System.out.println("temp" + temp);
+			System.out.println();
+			
+			System.out.println("arr : " + Arrays.toString(arr));	
+			System.out.println("temp : " + Arrays.toString(temp));
+			System.out.println();
+			
+			arr[0] = 0;
+			temp[1] = 0;
+			arr[2] = 0;
+			temp[3] = 0;
+			arr[4] = 0;
+			// 배열은 한쪽에서 바뀌어도 양쪽에서 바뀜
+			System.out.println("arr : " + Arrays.toString(arr));	
+			System.out.println("temp : " + Arrays.toString(temp));
+	```
 
 
 - **이차원 배열**
@@ -1303,7 +1303,262 @@ System.out.println(!(10 != 10));
 			else if (selectMenu == 0) {
 				scan.close();	
 				break; 	
-			}
-}
-```
+			} 	}
 
+- **삽입 (insert)**
+    
+    데이터들 중간 사이에 새로운 데이터를 추가하는 것은 삽입이라고 한다.
+
+   ```java
+    int[] arr = {10 , 20 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0};
+		int elementCnt = 2;
+		int selectMenu = 0;
+		
+		while(true) {
+			
+			System.out.println(Arrays.toString(arr));
+			System.out.println();
+			
+			System.out.println("[1]삽입");
+			System.out.println("[0]종료");
+			
+			System.out.print("메뉴 선택 : ");
+			selectMenu = scan.nextInt();
+			
+			if (selectMenu == 1) {
+				
+				if (elementCnt == arr.length) {
+					System.out.println("더 이상 삽입할 수 없습니다.");
+					continue;
+				}
+				
+				System.out.print("삽입할 위치 입력 : ");
+				int idx = scan.nextInt();
+				
+				if (idx < 0 || idx > elementCnt) { 
+					System.out.println("이 위치에는 삽입하실수 없습니다.");
+					continue;
+				}
+				
+				System.out.print("삽입할 값 입력 : ");
+				int data = scan.nextInt();
+				
+				for(int i = elementCnt; i > idx ; i--) { 
+					arr[i] = arr[i-1];
+				}
+				
+				arr[idx] = data;
+				elementCnt++;
+				
+			}
+			else if (selectMenu == 0) {
+				scan.close();
+				break;
+			}
+		}
+
+- **삭제 (delete)**
+  ```java
+    int[] arr = {10, 20, 30, 40, 50};
+		int elementCnt = 5;
+		int selectMenu = 0;
+		
+		while (true) {
+			
+			System.out.println(Arrays.toString(arr));
+			System.out.println();
+
+			System.out.println("[1]삭제");
+			System.out.println("[0]종료");
+			
+			System.out.print("메뉴 선택 : ");
+			selectMenu = scan.nextInt();
+
+			if (selectMenu == 1) {
+				
+				System.out.print("삭제할 값 입력 : ");
+				int data = scan.nextInt();
+				
+				int delIdx = -1; 
+				for (int i = 0; i < elementCnt; i++) {
+					if (arr[i] == data) {
+						delIdx = i;
+					}
+				}
+				
+				if (delIdx == -1) {
+					System.out.println("입력하신 값은 존재하지 않습니다.");
+				} 
+				else {
+					for (int i = delIdx; i < elementCnt - 1; i++) {
+						arr[i] = arr[i+1];	
+					}
+					elementCnt--;
+					arr[elementCnt] = 0; 
+				}
+				
+			}
+			else if (selectMenu == 0) {
+				scan.close();
+				break;
+			}
+  }
+
+- **어레이리스트 (ArrayList)**
+  1. **추가**
+
+  데이터를 입력 받아 순차적으로 추가
+
+  2. **삭제(인덱스)**
+
+  인덱스를 입력 받아 해당 위치의 데이터 삭제
+
+  3. **삭제(데이터)**
+
+  데이터를 입력 받아 삭제
+
+  없는 데이터 입력 시 예외 처리
+
+  4. **삽입**
+
+  인덱스와 데이터 입력 받아 삽입
+
+  ```java
+    int[] arr = null;	// null 상태
+		int elementCnt = 0;
+		
+		while (true) {
+			
+			for (int i = 0; i < elementCnt; i++) {
+				System.out.print(arr[i] + " ");
+			}
+			System.out.println();
+			
+			System.out.println("[어레이리스트 컨트롤러]");
+			System.out.println("[1]추가");
+			System.out.println("[2]삭제(인덱스)");
+			System.out.println("[3]삭제(데이터)");
+			System.out.println("[4]삽입");
+			System.out.println("[0]종료");
+			
+			System.out.print("메뉴 선택 : ");
+			int sel = scan.nextInt();
+			
+			if (sel == 1) {
+				if (elementCnt == 0) {	
+					arr = new int[elementCnt + 1];
+				}
+				else if (elementCnt > 0){
+					int[] temp = arr;	
+					arr = new int[elementCnt + 1];	
+					
+					for (int i = 0; i < elementCnt; i++) {
+						arr[i] = temp[i];	
+					}
+					
+					temp = null;	
+				}
+				
+				System.out.print("[추가]데이터 입력 : ");
+				int data = scan.nextInt();
+				
+				arr[elementCnt] = data;	
+				elementCnt++;
+			}
+			else if (sel == 2) {
+				System.out.print("[삭제]인덱스 입력 : ");
+				int delIdx = scan.nextInt();
+				
+				if (elementCnt - 1 < delIdx || delIdx < 0) {
+					System.out.println("[메세지]해당 위치는 삭제할 수 없습니다.");
+					continue;
+				}
+				
+				if (elementCnt == 1) {	
+					arr = null;
+				}
+				else if (elementCnt > 1) {	
+					int[] temp = arr;		
+					arr = new int[elementCnt - 1];	
+					
+					for (int i = 0; i < delIdx; i++) {	
+						arr[i] = temp[i];
+					}
+					for (int i = delIdx; i < elementCnt - 1; i++) {	
+						arr[i] = temp[i + 1];	
+					}
+					temp = null;
+				}
+				
+				elementCnt--;
+			}
+			else if (sel == 3) {
+				System.out.print("[삭제]데이터 입력 : ");
+				int delData = scan.nextInt();
+				
+				int delIdx = -1;
+				for (int i = 0; i < elementCnt; i++) {
+					if (arr[i] == delData) {
+						delIdx = i;
+					}
+				}
+				
+				if (delIdx == -1) {
+					System.out.println("[메세지]입력하신 데이터는 존재하지 않습니다.");
+					continue;
+				}
+				
+				if (elementCnt == 1) {	
+					arr = null;			
+				}
+				else if (elementCnt > 1) {
+					int[] temp = arr;
+					arr = new int[elementCnt - 1];
+					
+					int j = 0;
+					for (int i = 0; i < elementCnt; i++) {	
+						if (i != delIdx) {		
+							arr[j++] = temp[i]; 
+						}
+					}
+					
+					temp = null;
+				}
+				
+				elementCnt--;				
+			}
+			else if (sel == 4) {
+				System.out.print("[삽입]인덱스 입력 : ");
+				int insertIdx = scan.nextInt();
+				
+				if (elementCnt < insertIdx || insertIdx < 0) {
+					System.out.println("[메세지]해당 위치는 삽입할 수 없습니다.");
+					continue;
+				}
+				
+				System.out.print("[삽입]데이터 입력 : ");
+				int insertData = scan.nextInt();
+				
+				if (elementCnt == 0) {	
+					arr = new int[elementCnt + 1];
+				}
+				else if (elementCnt > 0) {
+					int[] temp = arr;
+					arr = new int[elementCnt + 1];
+					
+					int j = 0;
+					
+					for (int i = 0; i < elementCnt + 1; i++) {	
+               if (i != insertIdx) {
+							    arr[i] = temp[j++];	
+						}
+					}
+					temp = null;
+				}
+				
+				arr[insertIdx] = insertData;
+				elementCnt++;
+			}
+			else if (sel == 0) {
+				break;
+			}	}
