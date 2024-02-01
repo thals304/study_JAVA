@@ -1267,3 +1267,43 @@ System.out.println(!(10 != 10));
 				scan.close();	
 				break; 	
 			}	}	
+
+ - **배열 컨트롤러 (자료구조)**
+     - **추가 (append)**
+        
+     프로그래밍에서 데이터의 추가는 가장 끝 (마지막)에 하는 것이 일반적인 정책
+
+     ```java
+    int[] arr = {10 , 20 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0};
+		int elementCnt = 2;
+		int selectMenu = 0;
+		
+		while (true) {
+			
+			System.out.println(Arrays.toString(arr));
+			System.out.println();
+			
+			System.out.println("[1]추가");
+			System.out.println("[0]종료");
+			System.out.print("메뉴 선택 : ");
+			selectMenu = scan.nextInt();
+			
+			if (selectMenu == 1) {
+				
+				System.out.print("추가할 값 입력 : ");
+				int data = scan.nextInt();
+				
+				if(elementCnt == arr.length) {	
+					System.out.println("더이상 추가할 수 없습니다.");
+					continue;
+				}
+				arr[elementCnt] = data;
+				elementCnt ++;
+			}
+			else if (selectMenu == 0) {
+				scan.close();	
+				break; 	
+			}
+}
+```
+
