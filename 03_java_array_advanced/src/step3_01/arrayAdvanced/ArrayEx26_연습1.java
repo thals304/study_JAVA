@@ -1,11 +1,6 @@
 package step3_01.arrayAdvanced;
 
 import java.util.Random;
-
-// 24.01.
-/*
- * today 소감문
- * */
 /* 
  * # 1 to 50[3단계] : 1 to 18
  * 
