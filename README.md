@@ -1266,6 +1266,4 @@ System.out.println(!(10 != 10));
 			else if (selectMenu == 0) {
 				scan.close();	
 				break; 	
-			}
-}
-```
+			}	}	
