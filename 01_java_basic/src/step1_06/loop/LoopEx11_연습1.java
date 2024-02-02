@@ -1,7 +1,9 @@
 package step1_06.loop;
-
-
-
+// 24.02.02 
+/*
+ * today 소감문
+ * 
+ * */
 /*
  * # 베스킨라빈스31
  * 
@@ -27,7 +29,15 @@ public class LoopEx11_연습1 {
 		
 		int br = 0;
 		int turn = 0;
-
+		
+		while(br > 31) {
+			System.out.print((turn + 1) + "턴 : ");
+			
+			if ((turn + 1) % 2 != 0) {
+				System.out.print(p1 +" : ");
+				
+			}
+		}
 	}
 
 }

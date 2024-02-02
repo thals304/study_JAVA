@@ -45,7 +45,7 @@ public class ArrayEx31_연습1 {
 				
 			System.out.println(Arrays.toString(scores));
 			int max = scores[i];
-			int maxIdx = i;	// maxIdx = 0이 아닌 이유? 처음부터 다시 검사하는 문제 발생?
+			int maxIdx = i;	// maxIdx = 0이 아닌 이유? 처음부터 다시 검사하는 문제 발생
 			
 			for (int j = i + 1;  j < scores.length; j++) {	// i 다음번 인덱스 i+1 부터 비교해야 함
 				if (max < scores[j]) {
