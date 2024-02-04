@@ -1,7 +1,7 @@
 package step3_01.arrayAdvanced;
 
 import java.util.Scanner;
-// 24.02.01 
+// 24.02.
 /*
  * # ATM[4단계] : 전체 기능구현
  * 
