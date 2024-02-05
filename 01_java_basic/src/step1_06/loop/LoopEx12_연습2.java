@@ -1,5 +1,10 @@
 package step1_06.loop;
-
+// 24.02.05 time 21:35-
+/*
+ * today 소감문
+ * 연습 2는 정답예시의 풀이가 더 좋다고 느껴 분석 및 이해와 동시에 따라해보기를
+ * 한 것입니다.
+ * */
 /*
  * # 369게임[2단계]
  * 
@@ -12,7 +17,22 @@ package step1_06.loop;
 public class LoopEx12_연습2 {
 
 	public static void main(String[] args) {
-		
+		int i = 0;
+		while (i <= 50) {
+			int location10 = i / 10;	// 십의 자리
+			int location1 = i % 10;		// 일의 자리
+			
+			int count369 = 0;
+			
+			if (location10 != 0 && location10 % 3 == 0) count369++;	// 십의 자리 : 3,6,9
+			if (location1 != 0 && location1 % 3 == 0) count369++; // 일의 자리 : 3,6,9
+			
+			if (count369 == 2)	System.out.print("짝짝" + " ");
+			else if (count369 == 1)	System.out.print("짝" + " ");
+			else System.out.print(i);
+			
+			i++;
+		}
 	}
 
 }
