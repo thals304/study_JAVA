@@ -31,16 +31,18 @@ public class StringEx09_연습1 {
 		String[] words = {"java", "mysql", "jsp", "spring"};
 		
 		// 문제 셔플하는 걸 어떻게 하지
+		// [4] 문제가 안나오는 이유가 뭐지 - 계속 무한 루프가 돔 
 		int i = 0;
 		while (i < words.length) {
 			int rIdx = ran.nextInt(4);	// 랜덤 인덱스 번호 [0-3]
 			boolean isDuplicate = false;
-			
+			System.out.println("!!!!");
 			for (int j = 0; j < i; j++) {
 				if (words[rIdx].equals(words[j])) {	// 중복일때
 					isDuplicate = true;
 					break;
 				}
+				System.out.println("***");
 			}
 			if (isDuplicate == false) {	// 중복이 아닌 경우
 				System.out.print("["+(i+1)+"]"+"문제 : ");
@@ -54,7 +56,7 @@ public class StringEx09_연습1 {
 				if (words[i].equals(myAnswer)) {
 					i++;
 				}
-				else {	// 다시 똑같은 답 입력하도록 하고 싶은데
+				else {
 					System.out.println("다시 입력하세요");
 				}
 				
