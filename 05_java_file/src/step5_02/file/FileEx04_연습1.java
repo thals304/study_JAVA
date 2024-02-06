@@ -34,7 +34,7 @@ public class FileEx04_연습1 {
 		String data = "";
 		
 		for (int i = 0; i < names.length; i++) {
-			data += names[i]+"/"+pws[i]+"/"+moneys[i]+"\n";
+			data += names[i] + "/" + pws[i] + "/" + moneys[i] + "\n";
 			// 한 줄 띄기를 어떻게 표현하지? \n으로 표현함
 		}
 		

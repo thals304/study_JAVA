@@ -1,7 +1,11 @@
 package step4_01.string;
 
 import java.util.Scanner;
-
+// 24.02.06 time
+/*
+ * today 소감문
+ * 
+ * */
 /*
  * # 쇼핑몰 [관리자]
  * 
