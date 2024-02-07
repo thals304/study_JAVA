@@ -1,7 +1,7 @@
 package step4_01.string;
 
 import java.util.Scanner;
-// 24.02.06 time
+// 24.02.
 /*
  * today 소감문
  * 
