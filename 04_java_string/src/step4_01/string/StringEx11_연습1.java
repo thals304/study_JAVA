@@ -1,10 +1,15 @@
 package step4_01.string;
 
 import java.util.Scanner;
-// 24.02.
+// 24.02.09 time 22:40-22:58
 /*
  * today 소감문
- * 
+ * 일단 이 문제는 정답예시를 많이 참고해서 풀었다.
+ * 나는 배열이 100x2라서 도대체 아이템을 더 어떻게 추가하지부터
+ * 이 문제가 이해가 안되었던 것 같다.
+ * 근데 정답예시를 보고 나니 문자열이기 때문에 열이 2개밖에 없어도
+ * 계속 추가가 가능했던 것이었다. 이 점을 이해하고 나니 전체 코드가
+ * 이해가 잘 되었던 것 같다.
  * */
 /*
  * # 쇼핑몰 [관리자]
@@ -52,13 +57,37 @@ public class StringEx11_연습1 {
 			System.out.print(": ");
 			int sel = scan.nextInt();
 			
-			if (sel == 1) {}
-			else if (sel == 2) {}
-			else if (sel == 3) {}
-			else if (sel == 4) {}
+			if (sel == 1) {
+				
+				System.out.print("카테고리 입력 : ");
+				String category = scan.next();
+				items[itemCnt][0] = category;
+				itemCnt++;
+				
+			}
+			else if (sel == 2) {
+				for (int i = 0; i < itemCnt; i++) System.out.println("[" + i + "]" + items[i][0]);
+				System.out.print("카테고리 인덱스 선택 : ");
+				int choice = scan.nextInt();
+				
+				System.out.print("아이템 입력 : ");
+				String item = scan.next();
+				// String 배열 이므로 items[][1]에 문자열 계속 추가 가능
+				items[choice][1] += item;
+				items[choice][1] += "/";
+				
+			}
+			else if (sel == 3) {
+				for (int i = 0; i < itemCnt; i++) {
+					System.out.println(items[i][0] + " : " + items[i][1]);
+				}
+			}
+			else if (sel == 4) {
+				break;
+			}
 			
 		}
-
+		scan.close();
 
 
 	}
