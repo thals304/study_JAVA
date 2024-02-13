@@ -10,8 +10,8 @@
 
 ## 🏃 과정
 
-- 자바 + **프로그래밍 훈련**, 디버깅, 소스 관리 ( 형성, 버전 관리 )
-- 자바 ( 객체 지향 ) + **프로그래밍 훈련**
+- **자바 + 프로그래밍 훈련, 디버깅, 소스 관리 ( 형성, 버전 관리 )**
+- 자바 ( 객체 지향 ) + 프로그래밍 훈련
     
     cs ( 컴퓨터 사이언스: 네트워크, 리눅스, 자료구조 )
     
@@ -1758,6 +1758,191 @@ System.out.println(!(10 != 10));
 
 	### 파일 입출력 (File IO)
 
+	**예외 처리 (Exception)**
+
+  		- 자바에서 예외(Exception)는 프로그램 실행 중에 발생할 수 있는 비정상적인 상황 또는 오류를 나타낸다.
+    - 예외 처리는 이러한 문제들을 관리하고 프로그램의 정상적인 흐름을 유지하도록 돕는 중요한 메커니즘이다.
+    - 자바의 예외 처리는 프로그램의 안정성과 견고함을 높이는 데 중요한 역할을 한다.
+    - 적절한 예외 처리를 통해 예상치 못한 오류로부터 프로그램을 보호하고, 오류 상황을 적절히 관리할 수 있다.
+    
+    **[ 예외의 종류 ]**
+    
+    자바에서는 크게 두 가지 유형의 예외를 다룬다.
+    
+    1. 체크 예외(Checked Exception): 컴파일 시점에 처리를 강제하는 예외이다.
+    이 예외들은 Exception 클래스를 상속받지만, RuntimeException을 상속받지 않는다.
+    예를 들어, IOException이나 SQLException이 있으며 체크 예외는 반드시 try-catch 블록으로 처리하거나
+    throws 키워드를 사용하여 상위 메소드에 예외 처리 책임을 위임해야 한다.
+    ctrl + F 11 일 때
+    2. 언체크 예외(Unchecked Exception): 런타임 시에 발생하며, 컴파일 시점에 처리를 강제하지 않는다.
+    이 예외들은 RuntimeException을 상속받는다.
+    예를 들어, NullPointerException, ArrayIndexOutOfBoundsException 등이 있으며 명시적인 처리를 강제하지 않는다.
+    
+    **[ 예외 처리 방법 ]**
+    
+    자바에서는 주로 다음 두 가지 방법으로 예외를 처리한다.
+    
+    1. try-catch 블록: 예외가 발생할 수 있는 코드를 try 블록 안에 작성하고 catch 블록에서 해당 예외를 처리한다.
+    필요에 따라 finally 블록을 사용하여 예외 발생 여부와 관계없이 실행해야 하는 코드를 작성할 수 있다.
+    2. throws 키워드: 메소드 선언부에 throws 키워드를 사용하여 해당 메소드에서 처리하지 않고 호출한 메소드로 예외 처리 책임을 넘길 수 있다.
+
+```java
+   // try   : 예외가 발생하지 않을 경우 정상적으로 실행 될 명령어
+		try {
+			int[] testArr = new int[5];
+			System.out.println(testArr[0]);
+			// System.out.println(testArr[999]);
+			System.out.println(0/0);	
+			
+		}
+		// catch : try{} 안의 명령어가 실행되는 중 예외가 발생할 경우 분기되는 명령어
+		catch (ArrayIndexOutOfBoundsException e) {	
+			System.out.println("배열범위초과 에러 catch");
+			e.printStackTrace();	// 에러 메세지 출력기 (에러 경로)
+		}
+		catch (ArithmeticException e) {
+			System.out.println("연산 에러 catch");
+			e.printStackTrace();	// 에러 메세지 출력기
+		}
+		catch (Exception e) {	// 객체지향 - 상속에서 배움
+			System.out.println("모든 에러 catch");
+			e.printStackTrace();	// 에러 메세지 출력기
+		}
 	
+		// Exception : 모든 에러 catch
+		/*- 좀 더 디테일한 범위 에러 catch
+		 ArrayIndexOutOfBoundsException : 배열 인덱스 에러 catch
+		 ArithmeticException : 연산 에러 catch
+		 */
+```
+
+**finally**
+
+- 예외 발생과 상관없이 무조건 실행할 명령어를 작성한다.
+- 주로 외부 모듈과의 컨넥션을 종료할 때 사용한다.
+
+```java
+try {
+			
+			int[] testArr = new int[5];
+			System.out.println(testArr[0]);
+			System.out.println(testArr[999]);
+			
+		} 
+		catch (Exception e) {
+			System.out.println("모든 에러 catch");
+		} 
+		finally {
+			System.out.println("예외발생과 상관없이 무조건 실행할 명령어를 작성한다.");
+		}
+```
+
+**예외 (Exception) 처리 throws**
+
+- try ~ catch 와 같이 오류를 처리하나 상위 메서드로 오류에 대한 제어를 전가한다.
+
+```java
+public class ExceptionEx03 {
+
+	public static void main(String[] args) throws  Exception{
+		
+		int[] testArr = new int[5];
+		// System.out.println(testArr[0]);
+		System.out.println(testArr[999]);
+	}
+
+}
+```
+
+- **파일 입력 ( File Input )**
+
+```java
+    String fileName = "ex01.txt";	// 나중에 파일을 가져올 수 있게끔 변수에 저장
+		FileWriter fw = null;
+		// 파일이 생성되는 기본적인 위치는 현재 자바파일과 같은 프로젝트 폴더이다.(위치 변경 가능)
+		// 소스를 실행한 후 프로젝트를 선택 한 뒤 F5(Refresh)를 누르면 생성된 파일을 확인할 수 있다.
+		
+		try {	 // 파일 입출력은 try , catch 구문 없이 사용하지 못하도록 강제성을 부여해 놓았다.
+			fw = new FileWriter(fileName);	// 파일을 생성하는 기능의 객체 생성
+			
+			/*
+			 
+		 	- write메서드를 통해서 파일에 데이터 입력이 가능하다.
+		 
+		 	1) 문자열 데이터 형식만 가능하다. 
+		 	2) 개행기능이 없기 때문에 \n를 의도적으로 작성해야 한다.
+		 	3) write메소드를 여러번 사용하지 않고
+		    	데이터를 미리 +=로 만들어 놓고 한번만 write메소드를 사용하는 것을 권장한다.
+		    	
+		*/
+		
+			fw.write("파일에 데이터 입력하기 연습1\n");
+			fw.write("파일에 데이터 입력하기 연습2\n");
+			fw.write("파일에 데이터 입력하기 연습3\n");
+			
+			// JDK 17 version
+			String data = "파일에 데이터 입력하기 연습4\n";
+				   data += "파일에 데이터 입력하기 연습5\n";
+				   data += "파일에 데이터 입력하기 연습6\n";
+				   
+			fw.write(data);
+				   
+			// JDK 17 이후 version	   
+			data = """
+					파일에 데이터 입력하기 연습7
+					파일에 데이터 입력하기 연습8
+					파일에 데이터 입력하기 연습9
+					파일에 데이터 입력하기 연습10
+					""";
+			
+			fw.write(data);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {fw.close();} catch (IOException e) {e.printStackTrace();} }	// 파일 객체 종료 [중요]
+```
+
+- **파일 출력 ( File Output ), 로드 (load), 불러오기**
+
+```java
+    String fileName = "ex01.txt";
+		
+		File file = new File(fileName);	// 파일 객체 생성
+		FileReader fr = null;
+		BufferedReader br = null;
+		
+		// exists(); 파일이 존재하면 true, 존재하지 않으면 false 반환
+		if (file.exists()) {	
+			try {
+				fr = new FileReader(file);	  // 파일을 읽어오는 객체 생성
+				br = new BufferedReader(fr);  // 텍스트를 읽어오는 객체 생성
+				
+				String data = br.readLine();	// br.readLine(); 한 줄의 data를 읽어옴
+				System.out.println(data);
+				
+				System.out.println(br.readLine());
+				
+				// 전체 텍스트를 읽어오는 예시
+				while (true) {
+					data = br.readLine();
+					if (data == null) {	// 반환할 데이터가 없으면 null을 반환함
+						break;							
+						}
+					System.out.println(data);
+							}
+				
+			} 
+			catch (Exception e) {	// Exception은 모든 오류 catch
+				e.printStackTrace();
+			}
+			finally {
+				// 나중에 생성한 객체를 먼저 close한다.
+				
+				if (br != null) {try {br.close();} catch (IOException e) {e.printStackTrace();}}
+				if (fr != null) {try {fr.close();} catch (IOException e) {e.printStackTrace();} }
+			}
+		}
+```
 
 
