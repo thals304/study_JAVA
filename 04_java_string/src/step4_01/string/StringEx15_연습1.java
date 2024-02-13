@@ -2,6 +2,12 @@ package step4_01.string;
 
 import java.util.Scanner;
 
+// 24.02.
+
+/*
+ * today 소감문
+ * 
+ * */
 /*
  * # 문자열 속 숫자검사
  * 
