@@ -41,7 +41,7 @@ public class ArrayEx31_연습1 {
 		
 		
 			int i = 0;
-			while (i < scores.length - 1) {
+			while (i < scores.length - 1) { // 선택 정렬
 				
 			System.out.println(Arrays.toString(scores));
 			int max = scores[i];
