@@ -24,14 +24,14 @@ public class StringEx18_정답예시 {
 		int score = 100;
 		String word = "performance";
 		String meaning = "공연";
-		int isChecked[] = new int[word.length()]; 
+		int isChecked[] = new int[word.length()]; // 용도 : 공개됐는지(1) 안됐는지(0) 체크
 		
 		while (true) {
 			
 			int cnt = 0;
 			
 			for (int i = 0; i < word.length(); i++) {
-				if (isChecked[i] == 0) {
+				if (isChecked[i] == 0) {	// 처음에 isChecked 배열에는 아무것도 없어서 cnt = 11로 시작
 					cnt++;
 					break;
 				}
@@ -43,7 +43,7 @@ public class StringEx18_정답예시 {
 			System.out.println("뜻 : " + meaning);
 			System.out.print("문제 : ");
 			for (int i = 0; i < word.length(); i++) {
-				if (isChecked[i] == 1) {
+				if (isChecked[i] == 1) {	// ischecked[i]가 1일 때?
 					System.out.print(word.charAt(i));
 				}
 				else {
@@ -56,7 +56,7 @@ public class StringEx18_정답예시 {
 			System.out.print("영어단어를 입력하세요 >>> ");
 			String answer = scan.next();
 			
-			if (!answer.equals(word)) {
+			if (!answer.equals(word)) { // 정답과 내 답이 다를 경우
 				score -= 5;
 				while (true) {
 					int r = ran.nextInt(word.length());
