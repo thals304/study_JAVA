@@ -25,7 +25,7 @@ public class FileEx02 {
 				
 				String data = br.readLine();	// br.readLine(); 한 줄의 data를 읽어옴
 				System.out.println(data);
-				
+				// 위에 출력문과 똑같이 출력됨
 				System.out.println(br.readLine());
 				
 				// 전체 텍스트를 읽어오는 예시
